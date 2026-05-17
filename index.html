@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Umar — Senior Software Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #FAF8F4;
+    --warm-white: #F5F2EC;
+    --soft-sand: #EDE8DF;
+    --muted-teal: #4A7C75;
+    --deep-teal: #2D5A54;
+    --accent: #C17F4A;
+    --text-dark: #1C1C1A;
+    --text-mid: #4A4A46;
+    --text-light: #8A8A82;
+    --border: #E2DDD6;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(250, 248, 244, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Fraunces', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-mid);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--muted-teal); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+
+  .hero-left {
+    padding: 100px 60px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--muted-teal);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--muted-teal);
+  }
+
+  .hero-name {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(3rem, 5vw, 5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--muted-teal);
+  }
+
+  .hero-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1rem, 1.8vw, 1.4rem);
+    font-weight: 300;
+    color: var(--text-light);
+    margin-bottom: 36px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-desc {
+    font-size: 1rem;
+    color: var(--text-mid);
+    max-width: 420px;
+    line-height: 1.75;
+    margin-bottom: 48px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .btn-primary {
+    padding: 14px 32px;
+    background: var(--deep-teal);
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 4px;
+    letter-spacing: 0.02em;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .btn-primary:hover {
+    background: var(--muted-teal);
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text-mid);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .btn-secondary:hover {
+    color: var(--muted-teal);
+    border-color: var(--muted-teal);
+  }
+
+  .hero-right {
+    background: var(--soft-sand);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-right::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(74,124,117,0.12) 0%, transparent 70%);
+  }
+
+  .hero-card {
+    background: white;
+    border-radius: 16px;
+    padding: 40px;
+    width: 100%;
+    max-width: 360px;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.06);
+    position: relative;
+  }
+
+  .hero-card-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--text-light);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .stack-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+
+  .stack-tag {
+    padding: 6px 14px;
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--text-mid);
+  }
+
+  .stack-tag.highlight {
+    background: var(--deep-teal);
+    border-color: var(--deep-teal);
+    color: white;
+  }
+
+  .hero-stat-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+
+  .hero-stat {
+    text-align: center;
+  }
+
+  .hero-stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--deep-teal);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .hero-stat-label {
+    font-size: 0.72rem;
+    color: var(--text-light);
+    letter-spacing: 0.04em;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 100px 60px;
+  }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--muted-teal);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    max-width: 40px;
+    height: 1px;
+    background: var(--muted-teal);
+  }
+
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--text-dark);
+    margin-bottom: 60px;
+  }
+
+  /* ABOUT */
+  .about {
+    background: var(--warm-white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .about-text p {
+    font-size: 1.05rem;
+    color: var(--text-mid);
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  .about-text p:last-child { margin-bottom: 0; }
+
+  .about-highlight {
+    color: var(--deep-teal);
+    font-weight: 500;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .skill-item {
+    padding: 16px 20px;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+
+  .skill-name {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+  }
+
+  .skill-bar {
+    height: 3px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .skill-fill {
+    height: 100%;
+    background: var(--muted-teal);
+    border-radius: 2px;
+    transition: width 1s ease;
+  }
+
+  /* PROJECTS */
+  .projects { background: var(--cream); }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .project-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+  }
+
+  .project-card.featured {
+    grid-column: span 2;
+  }
+
+  .project-header {
+    padding: 28px 28px 0;
+  }
+
+  .project-industry {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--muted-teal);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .project-name {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--text-dark);
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+
+  .project-desc {
+    font-size: 0.88rem;
+    color: var(--text-mid);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 0 28px 24px;
+  }
+
+  .project-tag {
+    padding: 4px 10px;
+    background: var(--warm-white);
+    border-radius: 100px;
+    font-size: 0.72rem;
+    color: var(--text-mid);
+    font-weight: 500;
+  }
+
+  .project-footer {
+    padding: 16px 28px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .project-link {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--muted-teal);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.2s;
+  }
+
+  .project-link:hover { gap: 10px; }
+
+  .project-status {
+    font-size: 0.72rem;
+    color: var(--text-light);
+  }
+
+  /* EXPERIENCE */
+  .experience { background: var(--soft-sand); }
+
+  .timeline {
+    position: relative;
+    max-width: 800px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px; bottom: 0;
+    width: 1px;
+    background: var(--border);
+  }
+
+  .timeline-item {
+    padding-left: 40px;
+    padding-bottom: 56px;
+    position: relative;
+  }
+
+  .timeline-item:last-child { padding-bottom: 0; }
+
+  .timeline-dot {
+    position: absolute;
+    left: -5px; top: 8px;
+    width: 11px; height: 11px;
+    border-radius: 50%;
+    background: var(--muted-teal);
+    border: 2px solid var(--soft-sand);
+  }
+
+  .timeline-date {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--text-light);
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+  }
+
+  .timeline-company {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--text-dark);
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+
+  .timeline-role {
+    font-size: 0.88rem;
+    color: var(--muted-teal);
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+
+  .timeline-points {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .timeline-points li {
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .timeline-points li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--border);
+  }
+
+  /* CONTACT */
+  .contact {
+    background: var(--deep-teal);
+    text-align: center;
+    padding: 100px 60px;
+  }
+
+  .contact .section-label { color: rgba(255,255,255,0.5); justify-content: center; }
+  .contact .section-label::after { background: rgba(255,255,255,0.3); }
+
+  .contact .section-title {
+    color: white;
+    margin-bottom: 20px;
+  }
+
+  .contact-sub {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 48px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    padding: 14px 28px;
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 4px;
+    color: white;
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .contact-link:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.5);
+  }
+
+  .contact-link.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .contact-link.primary:hover {
+    background: #d4904f;
+    border-color: #d4904f;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #1A2E2B;
+    padding: 28px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer p {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.35);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-tag { animation: fadeUp 0.6s ease both; }
+  .hero-name { animation: fadeUp 0.6s ease 0.1s both; }
+  .hero-title { animation: fadeUp 0.6s ease 0.2s both; }
+  .hero-desc { animation: fadeUp 0.6s ease 0.3s both; }
+  .hero-actions { animation: fadeUp 0.6s ease 0.4s both; }
+  .hero-card { animation: fadeUp 0.7s ease 0.3s both; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 100px 24px 60px; }
+    section { padding: 70px 24px; }
+    .about { grid-template-columns: 1fr; gap: 40px; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card.featured { grid-column: span 1; }
+    footer { flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Muhammad Umar</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <span class="hero-tag">Available for Remote Work</span>
+    <h1 class="hero-name">Muhammad<br><em>Umar</em></h1>
+    <p class="hero-title">Senior Software Engineer</p>
+    <p class="hero-desc">I build backend systems that ship in production. APIs, integrations, and complex platforms across healthcare, telecom, hospitality, and e-commerce.</p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary">View My Work</a>
+      <a href="#contact" class="btn-secondary">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card">
+      <p class="hero-card-label">Core Stack</p>
+      <div class="stack-list">
+        <span class="stack-tag highlight">Laravel</span>
+        <span class="stack-tag highlight">PHP</span>
+        <span class="stack-tag highlight">GraphQL</span>
+        <span class="stack-tag">ColdFusion</span>
+        <span class="stack-tag">MySQL</span>
+        <span class="stack-tag">Vue.js</span>
+        <span class="stack-tag">REST APIs</span>
+        <span class="stack-tag">AWS S3</span>
+        <span class="stack-tag">Livewire</span>
+        <span class="stack-tag">MongoDB</span>
+      </div>
+      <div class="hero-stat-row">
+        <div class="hero-stat">
+          <div class="hero-stat-num">4+</div>
+          <div class="hero-stat-label">Years Experience</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">12+</div>
+          <div class="hero-stat-label">Projects Shipped</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-text">
+    <p class="section-label">About</p>
+    <h2 class="section-title">Backend engineer.<br>Problem solver.</h2>
+    <p>I am a <span class="about-highlight">Senior Software Engineer</span> based in Lahore, Pakistan with 4+ years of experience building production systems for international clients.</p>
+    <p>My work spans healthcare case management platforms, VoIP telecom systems, property booking platforms, and e-commerce stores. I specialize in <span class="about-highlight">Laravel, PHP, GraphQL</span>, and complex third-party API integrations.</p>
+    <p>I work remotely, communicate clearly, and ship code that works.</p>
+  </div>
+  <div>
+    <p class="section-label">Skills</p>
+    <div class="skills-grid">
+      <div class="skill-item">
+        <div class="skill-name">Laravel / PHP</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">GraphQL</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">MySQL / MongoDB</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">ColdFusion</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">API Integrations</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">Vue.js / Livewire</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <p class="section-label">Projects</p>
+  <h2 class="section-title">Production systems<br>I have shipped.</h2>
+  <div class="projects-grid">
+
+    <div class="project-card featured">
+      <div class="project-header">
+        <p class="project-industry">Telecom · NZ & AU</p>
+        <h3 class="project-name">Netfone</h3>
+        <p class="project-desc">VoIP/telecom platform serving customers in New Zealand and Australia. Built the full customer portal including Call History, AI Analysis, Reservations, Wi-Fi Watchdog, and TV Casts. Designed a cross-platform webhook pipeline connecting RMS, Netfone, and Nevaya for personalized guest TV greetings at check-in. Implemented async AI-powered reservation imports using Gemini AI.</p>
+      </div>
+      <div class="project-tags">
+        <span class="project-tag">Laravel</span>
+        <span class="project-tag">GraphQL</span>
+        <span class="project-tag">Livewire</span>
+        <span class="project-tag">MySQL</span>
+        <span class="project-tag">Gemini AI</span>
+        <span class="project-tag">RMS</span>
+        <span class="project-tag">Nevaya</span>
+      </div>
+      <div class="project-footer">
+        <span class="project-status">Production · Private</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <p class="project-industry">Healthcare</p>
+        <h3 class="project-name">XstremeMD</h3>
+        <p class="project-desc">Enterprise healthcare case management platform with 12+ modules handling thousands of patient records. Built encounter audit dashboard, AWS S3 Glacier archival, and B2B employer integrations.</p>
+      </div>
+      <div class="project-tags">
+        <span class="project-tag">ColdFusion</span>
+        <span class="project-tag">MySQL</span>
+        <span class="project-tag">AWS S3</span>
+        <span class="project-tag">Glacier</span>
+      </div>
+      <div class="project-footer">
+        <span class="project-status">Production · Private</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <p class="project-industry">Property Tech</p>
+        <h3 class="project-name">Livinc.com</h3>
+        <p class="project-desc">4-portal property booking platform connecting corporate clients, apartment providers, guests, and admins. Built backend APIs and booking flows serving the UK market.</p>
+      </div>
+      <div class="project-tags">
+        <span class="project-tag">Laravel</span>
+        <span class="project-tag">PHP</span>
+        <span class="project-tag">MySQL</span>
+        <span class="project-tag">REST API</span>
+      </div>
+      <div class="project-footer">
+        <a href="https://livinc.com" target="_blank" class="project-link">Visit Site →</a>
+        <span class="project-status">Live</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <p class="project-industry">E-Commerce</p>
+        <h3 class="project-name">Closyyyy</h3>
+        <p class="project-desc">Online thrift store with price negotiation and courier integration. Built PostEx API for order fulfillment and a buyer offer module for price negotiation on listed items.</p>
+      </div>
+      <div class="project-tags">
+        <span class="project-tag">Laravel</span>
+        <span class="project-tag">Vue.js</span>
+        <span class="project-tag">PostEx</span>
+        <span class="project-tag">MySQL</span>
+      </div>
+      <div class="project-footer">
+        <a href="https://closyyyy.com" target="_blank" class="project-link">Visit Site →</a>
+        <span class="project-status">Live</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <p class="project-industry">Logistics</p>
+        <h3 class="project-name">Load Board</h3>
+        <p class="project-desc">Real-time freight dispatch system integrating DATOne API for automated load tracking and data sync.</p>
+      </div>
+      <div class="project-tags">
+        <span class="project-tag">Laravel</span>
+        <span class="project-tag">DATOne API</span>
+        <span class="project-tag">MySQL</span>
+      </div>
+      <div class="project-footer">
+        <span class="project-status">Production · Private</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+  <p class="section-label">Experience</p>
+  <h2 class="section-title">Where I have<br>worked.</h2>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <p class="timeline-date">2023 — Present</p>
+      <h3 class="timeline-company">Rocktech Digital</h3>
+      <p class="timeline-role">Senior Software Engineer</p>
+      <ul class="timeline-points">
+        <li>Lead backend development across healthcare, telecom, hospitality, and e-commerce projects</li>
+        <li>Built Netfone VoIP platform serving NZ and AU on Laravel + GraphQL + Livewire</li>
+        <li>Developed XstremeMD enterprise healthcare platform with 12+ modules</li>
+        <li>Led 2-developer team on Closyyyy e-commerce platform</li>
+        <li>Managed client placement at Parklane Group building Livinc.com</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <p class="timeline-date">2022 — 2023</p>
+      <h3 class="timeline-company">Netroots Technologies</h3>
+      <p class="timeline-role">Associate Software Engineer</p>
+      <ul class="timeline-points">
+        <li>Built multi-branch School Management System, improving user adoption by 30%</li>
+        <li>Improved system performance by 50% through backend optimization</li>
+        <li>Developed secure Course Management System with Zoom integration</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <p class="section-label">Contact</p>
+  <h2 class="section-title">Let's build<br>something together.</h2>
+  <p class="contact-sub">Available for remote work, freelance projects, and long-term collaborations. Based in Lahore, Pakistan.</p>
+  <div class="contact-links">
+    <a href="mailto:mumarrasheed97@gmail.com" class="contact-link primary">Send an Email</a>
+    <a href="https://linkedin.com/in/umar-developer" target="_blank" class="contact-link">LinkedIn</a>
+    <a href="https://github.com/umarrasheed97" target="_blank" class="contact-link">GitHub</a>
+    <a href="https://www.fiverr.com/muhammadumar638" target="_blank" class="contact-link">Fiverr</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Muhammad Umar. All rights reserved.</p>
+  <p>Built with care. Lahore, Pakistan.</p>
+</footer>
+
+</body>
+</html>
